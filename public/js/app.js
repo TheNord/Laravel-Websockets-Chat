@@ -25290,7 +25290,7 @@ var app = new Vue({
                     createdDate: event.message.createdDate
                 });
             }
-            // удаляем статус "Печатает"
+            // удаляем статус "Печатает" после отправки
             _this.users.forEach(function (user, index) {
                 if (user.id === event.user.id) {
                     user.typing = false;
@@ -25337,7 +25337,6 @@ var app = new Vue({
             this.room = room;
 
             axios.get('/room/' + room).then(function (response) {
-                console.log(response.data);
                 _this4.messages = [];
                 _this4.messages = response.data;
             });

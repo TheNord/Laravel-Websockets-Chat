@@ -58,7 +58,6 @@ const app = new Vue({
             }
         });
         
-
         // слушаем приватный чат канал
         window.Echo.private(`private-chat-${Laravel.user.id}`)
             // создание комнаты, уведомляем пользователя
@@ -136,7 +135,7 @@ const app = new Vue({
                         createdDate: event.message.createdDate
                     });
                 }
-                // удаляем статус "Печатает"
+                // удаляем статус "Печатает" после отправки
                 this.users.forEach((user, index) => {
                     if (user.id === event.user.id) {
                         user.typing = false;
@@ -174,7 +173,6 @@ const app = new Vue({
             this.room = room;
 
             axios.get('/room/' + room).then(response => {
-                console.log(response.data);
                 this.messages = [];
                 this.messages = response.data;
             });
